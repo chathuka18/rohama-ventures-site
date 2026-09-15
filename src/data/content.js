@@ -6,8 +6,7 @@ export const company = {
   phoneDisplay: '071 89 44 725',
   phoneHref: '+94718944725',
   whatsapp: '94718944725',
-  addressLines: ['No. 9/12, Wijithapura,', 'Jayanthi Mawatha, Pelawatta,', 'Sri Lanka'],
-  registration: 'PV 00366134',
+  addressLines: ['Sri Lanka'],
 }
 
 // Replace null values with your official profile URLs when they are available.
