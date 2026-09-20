@@ -1,19 +1,4 @@
 import PageHero from '../components/PageHero'
 import CTA from '../components/CTA'
-import { insights, siteImages } from '../data/content'
-
-const insightImages = [siteImages.growthGlobe, siteImages.analyticsPair, siteImages.glassBoard]
-
-export default function Insights() {
-  return (
-    <>
-      <PageHero eyebrow="Insights" title="Ideas for better business and financial decisions." body="A publication-ready insights section for practical commentary on transactions, valuation, reporting, restructuring and strategy." image={siteImages.turningNumbers} />
-      <section className="bg-white py-20">
-        <div className="container-shell grid gap-5 lg:grid-cols-3">
-          {insights.map((x, i) => <article key={x.title} className="group overflow-hidden rounded-[2rem] border border-navy-900/10 bg-mist"><img src={insightImages[i % insightImages.length]} alt={x.title} className="h-52 w-full object-cover" /><div className="p-7"><div className="flex items-center justify-between text-[11px] uppercase tracking-[.2em] text-gold-500"><span>{x.category}</span><span className="text-navy-900/35">{x.read}</span></div><div className="mt-8 font-display text-3xl leading-tight">{x.title}</div><p className="mt-4 text-sm leading-7 text-navy-900/55">{x.excerpt}</p><div className="mt-8 text-sm font-semibold">Coming soon →</div></div></article>)}
-        </div>
-      </section>
-      <CTA />
-    </>
-  )
-}
+import { insights } from '../data/content'
+export default function Insights(){return <><PageHero eyebrow="Insights" title="Ideas for better business and financial decisions." body="A publication-ready insights section for practical commentary on transactions, valuation, reporting, restructuring and strategy." image="/images/insights.png"/><section className="bg-white py-20"><div className="container-shell grid gap-5 lg:grid-cols-3">{insights.map((x,i)=><article key={x.title} className="group rounded-[2rem] border border-navy-900/10 bg-mist p-7"><div className="flex items-center justify-between text-[11px] uppercase tracking-[.2em] text-gold-500"><span>{x.category}</span><span className="text-navy-900/35">{x.read}</span></div><div className="mt-16 font-display text-3xl leading-tight">{x.title}</div><p className="mt-4 text-sm leading-7 text-navy-900/55">{x.excerpt}</p><div className="mt-8 text-sm font-semibold">Coming soon →</div></article>)}</div></section><CTA/></>}

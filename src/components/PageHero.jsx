@@ -1,41 +1,5 @@
 import { motion } from 'framer-motion'
-
-export default function PageHero({ eyebrow, title, body, image, align = 'left' }) {
-  const alignment = align === 'center' ? 'mx-auto text-center items-center' : 'items-start'
-  const width = align === 'center' ? 'max-w-4xl' : 'max-w-3xl'
-
-  if (image) {
-    return (
-      <section className="relative isolate overflow-hidden py-24 lg:py-32">
-        <img src={image} alt="" className="absolute inset-0 h-full w-full object-cover" />
-        <div className="absolute inset-0 bg-[linear-gradient(90deg,rgba(7,20,33,.88),rgba(7,20,33,.72),rgba(7,20,33,.56))]" />
-        <div className="absolute inset-0 bg-[radial-gradient(circle_at_top_right,rgba(201,165,104,.22),transparent_30%)]" />
-        <div className="container-shell relative">
-          <motion.div
-            initial={{ opacity: 0, y: 18 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: .6 }}
-            className={`${width} flex flex-col ${alignment}`}
-          >
-            <div className="eyebrow">{eyebrow}</div>
-            <h1 className="mt-5 font-display text-4xl leading-[1.02] tracking-[-0.03em] text-white sm:text-5xl lg:text-6xl xl:text-7xl">{title}</h1>
-            {body && <p className="mt-7 max-w-2xl text-lg leading-8 text-white/70">{body}</p>}
-          </motion.div>
-        </div>
-      </section>
-    )
-  }
-
-  return (
-    <section className="relative overflow-hidden border-b border-navy-900/5 bg-mist py-20 lg:py-28">
-      <div className="absolute inset-0 grid-fade opacity-60" />
-      <div className="container-shell relative">
-        <motion.div initial={{ opacity: 0, y: 18 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: .6 }} className="max-w-4xl">
-          <div className="eyebrow">{eyebrow}</div>
-          <h1 className="display-title mt-5">{title}</h1>
-          {body && <p className="mt-7 max-w-2xl text-lg leading-8 text-navy-900/65">{body}</p>}
-        </motion.div>
-      </div>
-    </section>
-  )
+export default function PageHero({eyebrow,title,body,image}){
+  if(image){return <section className="relative overflow-hidden border-b border-navy-900/5 py-20 lg:py-28"><img src={image} alt="" className="absolute inset-0 h-full w-full object-cover"/><div className="absolute inset-0 bg-[linear-gradient(90deg,rgba(7,20,33,.90),rgba(7,20,33,.72),rgba(7,20,33,.48))]"/><div className="container-shell relative"><motion.div initial={{opacity:0,y:18}} animate={{opacity:1,y:0}} transition={{duration:.6}} className="max-w-4xl"><div className="eyebrow">{eyebrow}</div><h1 className="mt-5 font-display text-4xl leading-[1.02] tracking-[-0.03em] text-white sm:text-5xl lg:text-6xl xl:text-7xl">{title}</h1>{body&&<p className="mt-7 max-w-2xl text-lg leading-8 text-white/70">{body}</p>}</motion.div></div></section>}
+  return <section className="relative overflow-hidden border-b border-navy-900/5 bg-mist py-20 lg:py-28"><div className="absolute inset-0 grid-fade opacity-60"/><div className="container-shell relative"><motion.div initial={{opacity:0,y:18}} animate={{opacity:1,y:0}} transition={{duration:.6}} className="max-w-4xl"><div className="eyebrow">{eyebrow}</div><h1 className="display-title mt-5">{title}</h1>{body&&<p className="mt-7 max-w-2xl text-lg leading-8 text-navy-900/65">{body}</p>}</motion.div></div></section>
 }

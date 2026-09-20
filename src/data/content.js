@@ -10,32 +10,7 @@ export const company = {
   registration: 'PV 00366134',
 }
 
-export const siteImages = {
-  homeHero: '/images/rohama/home-hero.png',
-  turningNumbers: '/images/rohama/turning-numbers.png',
-  growthGlobe: '/images/rohama/growth-globe.png',
-  teamCollaboration: '/images/rohama/team-collaboration.png',
-  analyticsPair: '/images/rohama/analytics-pair.png',
-  boardroomTeam: '/images/rohama/boardroom-team.png',
-  connectedCity: '/images/rohama/connected-city.png',
-  glassBoard: '/images/rohama/glass-board.png',
-  architecture: '/images/rohama/architecture.png',
-  handshake: '/images/rohama/handshake.png',
-  executiveDesk: '/images/rohama/executive-desk.png',
-  ideaPlanGrow: '/images/rohama/idea-plan-grow.png',
-  realImpact: '/images/rohama/real-impact.png',
-  disciplineToday: '/images/rohama/discipline-today.png',
-  planExecuteGrow: '/images/rohama/plan-execute-grow.png',
-}
-
-export const serviceImages = {
-  'transaction-advisory': '/images/rohama/handshake.png',
-  'restructuring-turnaround': '/images/rohama/idea-plan-grow.png',
-  'financial-management-reporting': '/images/rohama/analytics-pair.png',
-  'corporate-finance-planning': '/images/rohama/growth-globe.png',
-  'strategic-business-advisory': '/images/rohama/glass-board.png',
-}
-
+// Replace null values with your official profile URLs when they are available.
 export const socialLinks = [
   { label: 'LinkedIn', href: null },
   { label: 'Facebook', href: null },
