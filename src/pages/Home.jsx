@@ -1,125 +1,79 @@
 import { Link } from 'react-router-dom'
 import { motion } from 'framer-motion'
-import { ArrowRight, ArrowUpRight, Building2, Mail, MapPin, Phone } from 'lucide-react'
+import { ArrowRight, ArrowUpRight, Mail, Phone, MapPin, CheckCircle2 } from 'lucide-react'
 import CTA from '../components/CTA'
-import { services, process, company } from '../data/content'
+import { services, process, company, siteImages, serviceImages } from '../data/content'
 
-const visualCards = [
+const showcases = [
   {
-    title: 'Independent advisory',
-    text: 'Business and financial advice grounded in analysis, strategy and real commercial insight.',
-    image: '/images/boardroom.png',
+    title: 'Sharper business insight',
+    body: 'Turn reporting, analysis and strategic evaluation into clearer executive decisions.',
+    image: siteImages.growthGlobe,
   },
   {
-    title: 'Structured decision support',
-    text: 'From reporting and valuation to planning and restructuring, we help you move with confidence.',
-    image: '/images/financial-dashboard.png',
+    title: 'Collaborative advisory support',
+    body: 'Work alongside experienced professionals who translate complexity into action.',
+    image: siteImages.teamCollaboration,
   },
   {
-    title: 'Implementation-focused approach',
-    text: 'We stay focused on practical outcomes, not just recommendations on paper.',
-    image: '/images/strategy-meeting.png',
+    title: 'Implementation with momentum',
+    body: 'Move from ideas and plans toward measurable progress and stronger outcomes.',
+    image: siteImages.glassBoard,
   },
 ]
 
 export default function Home() {
   return (
     <>
-      <section className="relative overflow-hidden bg-[#F7F9FC]">
-        <div className="absolute inset-0 bg-[radial-gradient(circle_at_top_right,rgba(201,165,104,.16),transparent_35%),radial-gradient(circle_at_bottom_left,rgba(11,32,55,.08),transparent_28%)]" />
+      <section className="relative overflow-hidden bg-[#F7F9FC] py-16 lg:py-20">
+        <div className="absolute inset-0 bg-radial-soft" />
         <div className="absolute inset-0 grid-fade opacity-40" />
-
-        <div className="container-shell relative grid min-h-[760px] items-center gap-12 py-16 lg:grid-cols-[1.02fr_.98fr] lg:py-20">
-          <motion.div
-            initial={{ opacity: 0, y: 24 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.7 }}
-          >
+        <div className="container-shell relative grid items-center gap-10 lg:grid-cols-[.92fr_1.08fr]">
+          <motion.div initial={{ opacity: 0, y: 24 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: .7 }}>
             <div className="eyebrow">{company.tagline}</div>
-            <h1 className="mt-6 max-w-5xl font-display text-[46px] leading-[.98] tracking-[-.04em] text-navy-900 sm:text-6xl lg:text-[76px]">
-              Better decisions. Stronger businesses. Sustainable value.
-            </h1>
-            <p className="mt-7 max-w-xl text-lg leading-8 text-navy-900/65">
-              ROHAMA Ventures helps business owners, investors and organisations navigate complex
-              financial and strategic decisions through independent analysis, experienced advisory
-              support and practical business solutions.
-            </p>
+            <h1 className="mt-6 max-w-5xl font-display text-[46px] leading-[.98] tracking-[-.04em] text-navy-900 sm:text-6xl lg:text-[76px]">Better decisions. Stronger businesses. Sustainable value.</h1>
+            <p className="mt-7 max-w-xl text-lg leading-8 text-navy-900/65">ROHAMA Ventures combines financial expertise, commercial insight, analytical capability and practical business experience to help clients navigate complex decisions with confidence.</p>
             <div className="mt-9 flex flex-wrap gap-3">
-              <Link
-                to="/contact"
-                className="inline-flex items-center gap-2 rounded-full bg-navy-900 px-6 py-3.5 text-sm font-semibold text-white"
-              >
-                Discuss your challenge <ArrowUpRight size={16} />
-              </Link>
-              <Link
-                to="/services"
-                className="inline-flex items-center gap-2 rounded-full border border-navy-900/15 bg-white px-6 py-3.5 text-sm font-semibold text-navy-900"
-              >
-                Explore services <ArrowRight size={16} />
-              </Link>
+              <Link to="/contact" className="inline-flex items-center gap-2 rounded-full bg-navy-900 px-6 py-3.5 text-sm font-semibold text-white">Discuss your challenge <ArrowUpRight size={16} /></Link>
+              <Link to="/services" className="inline-flex items-center gap-2 rounded-full border border-navy-900/15 bg-white px-6 py-3.5 text-sm font-semibold text-navy-900">Explore services <ArrowRight size={16} /></Link>
             </div>
-            <div className="mt-12 grid gap-3 sm:grid-cols-3">
-              <QuickContact icon={<Building2 size={18} />} label="Company" value={company.name} />
-              <QuickContact
-                icon={<Mail size={18} />}
-                label="Email"
-                value={company.email}
-                href={`mailto:${company.email}`}
-              />
-              <QuickContact
-                icon={<Phone size={18} />}
-                label="Telephone"
-                value={company.phoneDisplay}
-                href={`tel:${company.phoneHref}`}
-              />
+            <div className="mt-10 grid gap-3 sm:grid-cols-3">
+              {[
+                ['Independent advice', 'Objective and commercially grounded.'],
+                ['Practical execution', 'Advice designed to be implemented.'],
+                ['Sustainable growth', 'Focus on long-term value creation.'],
+              ].map(([title, body]) => (
+                <div key={title} className="rounded-2xl border border-navy-900/10 bg-white/80 p-4 backdrop-blur">
+                  <div className="text-sm font-semibold text-navy-900">{title}</div>
+                  <div className="mt-2 text-sm leading-6 text-navy-900/55">{body}</div>
+                </div>
+              ))}
             </div>
           </motion.div>
 
-          <motion.div
-            initial={{ opacity: 0, y: 30 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8, delay: 0.15 }}
-            className="relative"
-          >
-            <div className="relative overflow-hidden rounded-[2rem] border border-white/70 bg-white/40 p-3 shadow-[0_30px_80px_rgba(11,32,55,.18)] backdrop-blur-xl">
+          <motion.div initial={{ opacity: 0, y: 18 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: .7, delay: .1 }} className="relative">
+            <div className="overflow-hidden rounded-[2rem] border border-navy-900/10 bg-white p-3 shadow-soft sm:p-4">
               <div className="relative overflow-hidden rounded-[1.5rem]">
-                <motion.img
-                  src="/images/colombo-hero.png"
-                  alt="Colombo skyline with Lotus Tower"
-                  className="hero-image h-[300px] w-full object-cover sm:h-[420px] lg:h-[560px]"
-                  initial={{ scale: 1.06 }}
-                  animate={{ scale: 1.12 }}
-                  transition={{ duration: 16, repeat: Infinity, repeatType: 'reverse', ease: 'easeInOut' }}
-                />
-                <div className="absolute inset-0 bg-[linear-gradient(180deg,rgba(7,20,33,.08),rgba(7,20,33,.52))]" />
-                <div className="absolute left-5 top-5 rounded-full border border-white/25 bg-black/15 px-4 py-2 text-[10px] uppercase tracking-[.26em] text-white backdrop-blur-md">
-                  Colombo · Sri Lanka
-                </div>
-                <motion.div
-                  animate={{ y: [0, -8, 0] }}
-                  transition={{ duration: 5, repeat: Infinity, ease: 'easeInOut' }}
-                  className="absolute left-5 bottom-5 max-w-[240px] rounded-2xl border border-white/15 bg-white/12 p-4 text-white backdrop-blur-xl"
-                >
-                  <div className="text-xs uppercase tracking-[.18em] text-gold-300">Insight · Analysis</div>
-                  <div className="mt-2 text-lg font-semibold">Advisory rooted in Colombo.</div>
-                  <p className="mt-2 text-sm leading-6 text-white/75">
-                    The right place to grow your business with practical and independent support.
-                  </p>
-                </motion.div>
-                <motion.div
-                  animate={{ y: [0, 8, 0] }}
-                  transition={{ duration: 5.5, repeat: Infinity, ease: 'easeInOut' }}
-                  className="absolute right-5 top-5 hidden w-[190px] rounded-2xl border border-white/15 bg-white/85 p-4 text-navy-900 shadow-soft backdrop-blur-xl sm:block"
-                >
-                  <div className="text-xs uppercase tracking-[.16em] text-gold-500">What we deliver</div>
-                  <div className="mt-3 space-y-2 text-sm font-medium">
-                    <div>• Financial reporting</div>
-                    <div>• Strategic planning</div>
-                    <div>• Valuation & due diligence</div>
-                    <div>• Restructuring support</div>
+                <img src={siteImages.homeHero} alt="ROHAMA Ventures business advisory scene" className="h-[340px] w-full object-cover sm:h-[460px] lg:h-[560px]" />
+                <div className="absolute inset-0 bg-[linear-gradient(180deg,rgba(7,20,33,.08),rgba(7,20,33,.38))]" />
+                <div className="absolute left-5 top-5 rounded-full border border-white/25 bg-white/15 px-4 py-2 text-[11px] font-semibold uppercase tracking-[.22em] text-white backdrop-blur">Business & Financial Advisory</div>
+                <div className="absolute bottom-5 left-5 right-5 grid gap-3 sm:grid-cols-2">
+                  <div className="rounded-2xl border border-white/20 bg-white/14 p-4 text-white backdrop-blur-xl">
+                    <div className="text-[11px] uppercase tracking-[.18em] text-white/65">Focused outcomes</div>
+                    <div className="mt-2 text-xl font-semibold">Strategy, reporting, valuation, growth.</div>
                   </div>
-                </motion.div>
+                  <div className="rounded-2xl border border-white/20 bg-[#071421]/55 p-4 text-white backdrop-blur-xl">
+                    <div className="text-[11px] uppercase tracking-[.18em] text-gold-300">Decision support</div>
+                    <div className="mt-2 flex flex-wrap gap-x-4 gap-y-2 text-sm text-white/80">
+                      <span>Transactions</span><span>Restructuring</span><span>Planning</span><span>Performance</span>
+                    </div>
+                  </div>
+                </div>
               </div>
+            </div>
+            <div className="absolute -bottom-6 -left-3 rounded-2xl bg-navy-900 px-5 py-4 text-white shadow-soft sm:-left-6">
+              <div className="text-[11px] uppercase tracking-[.18em] text-gold-300">ROHAMA</div>
+              <div className="mt-1 text-sm">Premium advisory presentation powered by your uploaded brand visuals.</div>
             </div>
           </motion.div>
         </div>
@@ -127,86 +81,50 @@ export default function Home() {
 
       <section className="bg-white py-20 lg:py-28">
         <div className="container-shell">
-          <div className="grid gap-10 lg:grid-cols-[.75fr_1.25fr]">
-            <div>
-              <div className="eyebrow">Who we are</div>
-              <h2 className="mt-5 font-display text-4xl leading-tight text-navy-900 sm:text-5xl">
-                A trusted partner for business & financial advisory.
-              </h2>
-            </div>
-            <div className="grid gap-6 sm:grid-cols-3">
-              <Stat n="01" t="Structured Methodology" b="A defined seven-stage process for every assignment." />
-              <Stat n="02" t="Experienced Resource Network" b="Professionals with strong finance and advisory credentials." />
-              <Stat n="03" t="Broad Deliverable Range" b="From due diligence reports to financial models and board packs." />
-            </div>
-          </div>
-        </div>
-      </section>
-
-      <section className="bg-mist py-20 lg:py-28">
-        <div className="container-shell">
           <div className="flex flex-col gap-4 sm:flex-row sm:items-end sm:justify-between">
             <div>
-              <div className="eyebrow">What we do</div>
-              <h2 className="mt-4 font-display text-4xl text-navy-900 sm:text-5xl">
-                Five pillars. One advisory relationship.
-              </h2>
+              <div className="eyebrow">Brand showcase</div>
+              <h2 className="mt-4 font-display text-4xl text-navy-900 sm:text-5xl">Premium visuals placed where they matter most.</h2>
             </div>
-            <Link to="/services" className="text-sm font-semibold text-navy-900">
-              View all services →
-            </Link>
+            <p className="max-w-2xl text-base leading-8 text-navy-900/60">Your uploaded images now shape the homepage experience and reinforce ROHAMA’s positioning across strategy, finance, growth and executive advisory.</p>
           </div>
-          <div className="mt-10 grid gap-4 lg:grid-cols-5">
-            {services.map((s) => (
-              <motion.div whileHover={{ y: -7 }} transition={{ type: 'spring', stiffness: 220 }} key={s.slug}>
-                <Link
-                  to={`/services/${s.slug}`}
-                  className="group flex min-h-[340px] flex-col rounded-[1.6rem] bg-navy-900 p-6 text-white shadow-soft"
-                >
-                  <div className="font-display text-4xl text-gold-400">{s.number}</div>
-                  <div className="mt-auto">
-                    <div className="text-lg font-semibold leading-snug">{s.title}</div>
-                    <p className="mt-3 text-sm leading-6 text-white/50">{s.short}</p>
-                    <div className="mt-5 inline-flex items-center gap-2 text-xs text-gold-400">
-                      Explore <ArrowUpRight size={14} />
-                    </div>
-                  </div>
-                </Link>
+          <div className="mt-10 grid gap-5 lg:grid-cols-3">
+            {showcases.map((item, i) => (
+              <motion.div key={item.title} initial={{ opacity: 0, y: 18 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true, amount: .2 }} transition={{ delay: i * .06 }} className="overflow-hidden rounded-[2rem] border border-navy-900/10 bg-mist shadow-soft">
+                <img src={item.image} alt={item.title} className="h-64 w-full object-cover" />
+                <div className="p-6">
+                  <div className="text-xs uppercase tracking-[.18em] text-gold-500">0{i + 1}</div>
+                  <h3 className="mt-3 text-xl font-semibold text-navy-900">{item.title}</h3>
+                  <p className="mt-3 text-sm leading-7 text-navy-900/55">{item.body}</p>
+                </div>
               </motion.div>
             ))}
           </div>
         </div>
       </section>
 
-      <section className="bg-white py-20 lg:py-28">
+      <section className="bg-mist py-20 lg:py-28">
         <div className="container-shell">
-          <div className="grid items-center gap-6 lg:grid-cols-[.9fr_1.1fr]">
+          <div className="grid gap-10 lg:grid-cols-[.8fr_1.2fr] lg:items-end">
             <div>
-              <div className="eyebrow">Visual insight</div>
-              <h2 className="mt-4 font-display text-4xl leading-tight text-navy-900 sm:text-5xl">
-                Advisory built around real business challenges.
-              </h2>
-              <p className="mt-6 max-w-xl text-base leading-8 text-navy-900/60">
-                From management reporting to strategy and financial decision-making, ROHAMA Ventures
-                combines numbers with commercial context so leaders can act with clarity.
-              </p>
+              <div className="eyebrow">What we do</div>
+              <h2 className="mt-4 font-display text-4xl text-navy-900 sm:text-5xl">Five pillars. One advisory relationship.</h2>
+              <p className="mt-5 max-w-lg text-base leading-8 text-navy-900/60">From transactions through restructuring, reporting, planning and strategy, each service now has stronger visual storytelling using your supplied imagery.</p>
             </div>
-            <div className="grid gap-5 md:grid-cols-3">
-              {visualCards.map((card, idx) => (
-                <motion.div
-                  key={card.title}
-                  initial={{ opacity: 0, y: 24 }}
-                  whileInView={{ opacity: 1, y: 0 }}
-                  viewport={{ once: true, amount: 0.2 }}
-                  transition={{ duration: 0.5, delay: idx * 0.08 }}
-                  className="overflow-hidden rounded-[1.7rem] border border-navy-900/10 bg-mist shadow-soft"
-                >
-                  <img src={card.image} alt={card.title} className="h-48 w-full object-cover" />
-                  <div className="p-6">
-                    <h3 className="text-lg font-semibold text-navy-900">{card.title}</h3>
-                    <p className="mt-3 text-sm leading-7 text-navy-900/58">{card.text}</p>
+            <div className="grid gap-4 sm:grid-cols-2 xl:grid-cols-5">
+              {services.map((s) => (
+                <Link key={s.slug} to={`/services/${s.slug}`} className="group overflow-hidden rounded-[1.8rem] border border-navy-900/10 bg-white shadow-soft transition hover:-translate-y-1">
+                  <div className="relative h-40 overflow-hidden">
+                    <img src={serviceImages[s.slug]} alt={s.title} className="h-full w-full object-cover transition duration-500 group-hover:scale-105" />
+                    <div className="absolute inset-0 bg-[linear-gradient(180deg,rgba(7,20,33,.10),rgba(7,20,33,.55))]" />
+                    <div className="absolute left-4 top-4 font-display text-4xl text-gold-300">{s.number}</div>
                   </div>
-                </motion.div>
+                  <div className="p-5">
+                    <div className="text-lg font-semibold leading-snug text-navy-900">{s.title}</div>
+                    <p className="mt-3 text-sm leading-6 text-navy-900/55">{s.short}</p>
+                    <div className="mt-5 inline-flex items-center gap-2 text-xs font-semibold uppercase tracking-[.14em] text-gold-500">Explore <ArrowUpRight size={14} /></div>
+                  </div>
+                </Link>
               ))}
             </div>
           </div>
@@ -214,62 +132,56 @@ export default function Home() {
       </section>
 
       <section className="bg-white py-20 lg:py-28">
-        <div className="container-shell">
-          <div className="grid items-start gap-12 lg:grid-cols-[.85fr_1.15fr]">
-            <div className="lg:sticky lg:top-28">
-              <div className="eyebrow">Our philosophy</div>
-              <h2 className="mt-5 font-display text-4xl leading-tight sm:text-5xl">
-                Good decisions need more than good numbers.
-              </h2>
-              <p className="mt-6 max-w-lg text-base leading-8 text-navy-900/60">
-                We combine financial analysis, commercial evaluation, strategic thinking and practical
-                implementation in every assignment.
-              </p>
-            </div>
-            <div className="grid gap-3 sm:grid-cols-2">
-              {[
-                'Where does the business currently stand?',
-                'Why are financial and operational results changing?',
-                'What risks may affect the business?',
-                'What opportunities are available?',
-                'What is the business worth?',
-                'How should capital be deployed?',
-                'Does an acquisition or investment make commercial sense?',
-                'How should debt and financing be structured?',
-              ].map((q, i) => (
-                <div key={q} className="rounded-2xl border border-navy-900/10 bg-mist p-5">
-                  <span className="text-xs text-gold-500">0{i + 1}</span>
-                  <p className="mt-3 text-sm font-medium leading-6 text-navy-900">{q}</p>
+        <div className="container-shell grid items-center gap-12 lg:grid-cols-[.92fr_1.08fr]">
+          <div>
+            <div className="eyebrow">Our approach</div>
+            <h2 className="mt-5 font-display text-4xl leading-tight text-navy-900 sm:text-5xl">A structured, seven-stage engagement methodology.</h2>
+            <p className="mt-6 max-w-lg text-base leading-8 text-navy-900/60">Every engagement follows a transparent path while keeping recommendations grounded in a clear understanding of the business.</p>
+            <div className="mt-8 space-y-4">
+              {process.slice(0, 4).map((p) => (
+                <div key={p.title} className="flex items-start gap-4 rounded-2xl border border-navy-900/10 bg-mist p-4">
+                  <div className="mt-1 flex h-9 w-9 shrink-0 items-center justify-center rounded-full bg-navy-900 text-sm font-semibold text-white">{p.number}</div>
+                  <div>
+                    <div className="font-semibold text-navy-900">{p.title}</div>
+                    <div className="mt-1 text-sm leading-6 text-navy-900/55">{p.summary}</div>
+                  </div>
                 </div>
               ))}
+            </div>
+            <Link to="/our-approach" className="mt-8 inline-flex items-center gap-2 text-sm font-semibold text-navy-900">See the full methodology <ArrowRight size={15} /></Link>
+          </div>
+          <div className="grid gap-4 sm:grid-cols-2">
+            <img src={siteImages.ideaPlanGrow} alt="Structured approach" className="h-64 w-full rounded-[1.8rem] object-cover shadow-soft sm:h-full" />
+            <div className="grid gap-4">
+              <img src={siteImages.planExecuteGrow} alt="Plan execute grow" className="h-56 w-full rounded-[1.8rem] object-cover shadow-soft" />
+              <img src={siteImages.executiveDesk} alt="Executive desk" className="h-56 w-full rounded-[1.8rem] object-cover shadow-soft" />
             </div>
           </div>
         </div>
       </section>
 
-      <section className="overflow-hidden bg-navy-950 py-20 text-white lg:py-28">
-        <div className="container-shell">
-          <div className="eyebrow">Our approach</div>
-          <div className="mt-4 grid gap-8 lg:grid-cols-[.8fr_1.2fr]">
-            <h2 className="font-display text-4xl leading-tight sm:text-5xl">
-              A structured, seven-stage engagement methodology.
-            </h2>
-            <p className="max-w-xl text-base leading-8 text-white/55">
-              Every engagement follows a transparent path while keeping recommendations grounded in a
-              clear understanding of the business.
-            </p>
-          </div>
-          <div className="mt-14 overflow-x-auto pb-2">
-            <div className="grid min-w-[980px] grid-cols-7">
-              {process.map((p) => (
-                <div className="relative border-t border-white/15 pt-7 pr-5" key={p.title}>
-                  <span className="absolute -top-[5px] left-0 h-2.5 w-2.5 rounded-full bg-gold-400" />
-                  <div className="font-display text-3xl text-gold-400">{p.number}</div>
-                  <div className="mt-3 font-semibold">{p.title}</div>
-                  <p className="mt-2 text-xs leading-5 text-white/45">{p.summary}</p>
+      <section className="bg-navy-950 py-20 text-white lg:py-28">
+        <div className="container-shell grid gap-12 lg:grid-cols-[1.1fr_.9fr]">
+          <div>
+            <div className="eyebrow">Why ROHAMA</div>
+            <h2 className="mt-5 font-display text-4xl leading-tight sm:text-5xl">Good decisions need more than good numbers.</h2>
+            <p className="mt-6 max-w-2xl text-base leading-8 text-white/60">We combine financial analysis, commercial evaluation, strategic thinking and practical implementation in every assignment.</p>
+            <div className="mt-8 grid gap-4 sm:grid-cols-2">
+              {[
+                'Independent analysis grounded in evidence.',
+                'Commercial insight shaped by practical business experience.',
+                'Clear communication with management and stakeholders.',
+                'Action-focused support beyond the final report.',
+              ].map((item) => (
+                <div key={item} className="flex items-start gap-3 rounded-2xl border border-white/10 bg-white/[.04] p-4">
+                  <CheckCircle2 size={18} className="mt-0.5 text-gold-400" />
+                  <p className="text-sm leading-7 text-white/72">{item}</p>
                 </div>
               ))}
             </div>
+          </div>
+          <div className="overflow-hidden rounded-[2rem] border border-white/10 bg-white/[.04] shadow-soft">
+            <img src={siteImages.disciplineToday} alt="ROHAMA workspace" className="h-full w-full object-cover" />
           </div>
         </div>
       </section>
@@ -281,54 +193,24 @@ export default function Home() {
               <div>
                 <div className="eyebrow">Contact</div>
                 <h2 className="mt-4 font-display text-4xl text-navy-900">Talk to ROHAMA Ventures.</h2>
-                <p className="mt-4 text-sm leading-7 text-navy-900/55">
-                  Start with a free, no-obligation conversation about the business decision or challenge
-                  in front of you.
-                </p>
+                <p className="mt-4 text-sm leading-7 text-navy-900/55">Start with a free, no-obligation conversation about the business decision or challenge in front of you.</p>
               </div>
-              <div className="grid gap-3 sm:grid-cols-4">
-                <ContactItem icon={<MapPin size={18} />} label="Address" value="Pelawatta, Sri Lanka" />
+              <div className="grid gap-3 sm:grid-cols-3">
+                <ContactItem icon={<MapPin size={18} />} label="Colombo, Sri Lanka" value="Pelawatta" />
                 <ContactItem icon={<Mail size={18} />} label="Email" value={company.email} href={`mailto:${company.email}`} />
                 <ContactItem icon={<Phone size={18} />} label="Telephone" value={company.phoneDisplay} href={`tel:${company.phoneHref}`} />
-                <ContactItem icon={<Building2 size={18} />} label="Office" value="Colombo" />
               </div>
             </div>
           </div>
         </div>
       </section>
+
       <CTA />
     </>
   )
 }
 
-function Stat({ n, t, b }) {
-  return (
-    <div className="rounded-3xl border border-navy-900/10 bg-mist p-6">
-      <div className="font-display text-3xl text-gold-500">{n}</div>
-      <h3 className="mt-8 font-semibold text-navy-900">{t}</h3>
-      <p className="mt-3 text-sm leading-6 text-navy-900/55">{b}</p>
-    </div>
-  )
-}
-
-function QuickContact({ icon, label, value, href }) {
-  const Component = href ? 'a' : 'div'
-  return (
-    <Component href={href} className="rounded-2xl border border-navy-900/10 bg-white/90 p-4 shadow-sm backdrop-blur-xl">
-      <div className="text-gold-500">{icon}</div>
-      <div className="mt-3 text-[10px] uppercase tracking-[.18em] text-navy-900/42">{label}</div>
-      <div className="mt-1 text-sm font-semibold leading-6 text-navy-900">{value}</div>
-    </Component>
-  )
-}
-
 function ContactItem({ icon, label, value, href }) {
   const C = href ? 'a' : 'div'
-  return (
-    <C href={href} className="rounded-2xl bg-white p-5 shadow-sm transition hover:-translate-y-0.5">
-      <div className="text-gold-500">{icon}</div>
-      <div className="mt-4 text-xs uppercase tracking-[.16em] text-navy-900/40">{label}</div>
-      <div className="mt-2 break-words text-sm font-semibold text-navy-900">{value}</div>
-    </C>
-  )
+  return <C href={href} className="rounded-2xl bg-white p-5 shadow-sm transition hover:-translate-y-0.5"><div className="text-gold-500">{icon}</div><div className="mt-4 text-xs uppercase tracking-[.16em] text-navy-900/40">{label}</div><div className="mt-2 break-words text-sm font-semibold text-navy-900">{value}</div></C>
 }
